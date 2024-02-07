@@ -36,7 +36,7 @@ Happy Hacking!
     - macOS
         - Optional faster way -> You can download the install.sh, then run (in terminal) : bash install.sh
     - Or
-      - git clone https://github.com/blueraymusic/Cmd-bot
+      - git clone https://github.com/blueraymusic/Combot
       - cd Cmd-bot
       - pip3 install -r requirements.txt
       - chmod +x computer.py
