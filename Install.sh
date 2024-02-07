@@ -27,6 +27,7 @@ fi
 pip3 install --upgrade anaconda-cloud-auth
 pip3 install pydantic==1.8.2
 pip3 install -U pydantic-settings
+pip3 install urllib3 == 1.26.6
 
 echo "Hello. Installing computer..."
 echo "- Cloning the repository..."
