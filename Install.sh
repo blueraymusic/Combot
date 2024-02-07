@@ -54,9 +54,9 @@ echo "- Adding aliases to the shell configuration file..."
 # Determine the shell configuration file
 if [[ -f ~/.bashrc ]]; then
     SHELL_CONFIG_FILE=~/.bashrc
-elif [[ -f ~/.bash_profile ]]; then
+if [[ -f ~/.bash_profile ]]; then
     SHELL_CONFIG_FILE=~/.bash_profile
-elif [[ -f ~/.zshrc ]]; then
+if [[ -f ~/.zshrc ]]; then
     SHELL_CONFIG_FILE=~/.zshrc
 else
     echo "Error: Unable to determine the shell configuration file. Please manually add the aliases to your shell configuration."
@@ -66,6 +66,8 @@ fi
 # Append aliases to the shell configuration file
 echo "alias computer=$TARGET_FULLPATH" >> "$SHELL_CONFIG_FILE"
 echo "alias bot=$TARGET_FULLPATH" >> "$SHELL_CONFIG_FILE"
+echo 'export PATH="/usr/local/bin:$PATH"' >> "$SHELL_CONFIG_FILE"
+
 
 # Reload the shell configuration
 echo "- Reloading the shell configuration..."
