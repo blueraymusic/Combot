@@ -169,7 +169,7 @@ def api(query):
     sys.exit(f"Issue encountered:\n   Re-install the package  or Create a new root.yaml file in the following directory: {prompt_path}\n   If creating a new root.yaml file, it has to contain the following variable:\n     pass: ROOT_PASS or 'nopass' for default setup\n ")
 
   if "--API" in query:
-      replace_dict = {"--API": "", " ": "", '"': '', "'":""}
+      replace_dict = {"--API": "", " ": "", '"': '', "'":"", ":" : ""}
       prompt = replace_multiple(str(query), replace_dict)
 
       def set_state(state):
@@ -207,7 +207,7 @@ def api(query):
 
 
   elif "--MODEL" in query:
-      replace_dict = {"--MODEL": "", " ": "", '"': '', "'":""}
+      replace_dict = {"--MODEL": "", " ": "", '"': '', "'":"", ":" : ""}
       prompt = replace_multiple(str(query), replace_dict)
       
       def set_state(state):
@@ -238,10 +238,10 @@ def api(query):
             print(colored("* Error message: ", "red") + str(e))
             sys.exit(1)  
       else:
-          sys.exit("API: Please set the API \n")
+          sys.exit(colored("Error : Couldn't process the model", "red"), + str(prompt), "\n -- Verify the API validity \n -- Verify the model availability then try again \n If the issue persists, help us solve it by using this form : https://github.com/blueraymusic/Combot/issues \n")
 
   elif "--PSW" in query:
-      replace_dict = {"--PSW": "", " ": "", '"': '', "'":""}
+      replace_dict = {"--PSW": "", " ": "", '"': '', "'":"", ":" : ""}
       prompt = replace_multiple(str(query), replace_dict)
       computerpass = os.path.join(prompt_path, "root.yaml")
       
