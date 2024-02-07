@@ -7,3 +7,4 @@ termcolor
 colorama
 aiohttp
 keyring
+urllib3 == 1.26.6
