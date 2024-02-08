@@ -5,7 +5,7 @@ if ! command -v pip3 &>/dev/null; then
     echo "Error: pip3 not found. Please install Python3 and pip3 first."
     exit 1
 fi
-
+&
 pip3 install -r requirements.txt
 
 # Upgrade OpenSSL with user confirmation
@@ -88,7 +88,9 @@ if ! alias bot &>/dev/null; then
     exit 1
 fi
 
-# 
+pip3 install urllib3 == 1.26.6
+source "$SHELL_CONFIG_FILE"
+
 echo
 echo "Done."
 echo
