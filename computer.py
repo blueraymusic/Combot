@@ -10,6 +10,8 @@ import distro
 import yaml
 import pyperclip
 import keyring
+import time
+import requests
 
 #import loggin
 
@@ -104,13 +106,14 @@ def print_usage():
   print(colored("Set Up Comands:","blue"))
   print(colored("* Api        : ", "green") + "computer --API : API_KEY")
   print(colored("* Gpt Model        : ", "green") + "computer --MODEL : model (eg. gpt-3.5-turbo)")
+  print(colored("* Image Generator        : ", "green") + "computer --IMG : IMAGE_PROMPT")
   print(colored("* Root Mode       : ", "green") + "computer --PSW : ROOT_PASS (eg. 1234)(Optional)")
   print(colored("* Default Root Mode      : ", "green") + "computer --PSW : nopass (Set to 'nopass')")
   print(colored("Command:","blue"))
   print(colored("* Generative Prompt        : ", "green") + "computer -c YOUR_PROMPT")
   print(colored("* Terminal Functions       : ", "green") + "computer YOUR_PROMPT")
   print(colored("* Information      : ", "green") + "computer -i")
-  print(colored("* Issues      : ", "green") + "https://github.com/blueraymusic/Cmd-bot")
+  print(colored("* Issues      : ", "green") + "https://github.com/blueraymusic/Combot")
 
 
   #print(colored(f"* Size        : {os.path.getsize(file)}", "green"))
@@ -241,6 +244,10 @@ def api(query):
           sys.exit(colored("Error : Couldn't process the model", "red"), + str(prompt), "\n -- Verify the API validity \n -- Verify the model availability then try again \n If the issue persists, help us solve it by using this form : https://github.com/blueraymusic/Combot/issues \n")
 
   elif "--PSW" in query:
+      #Warning
+      print(colored("Note Well:", "cyan"), "Submitting your password is not a secured way but a faster way that eases your user experience. \n     If you want a more safe usage then submit the password as : nopass")
+
+
       replace_dict = {"--PSW": "", " ": "", '"': '', "'":"", ":" : ""}
       prompt = replace_multiple(str(query), replace_dict)
       computerpass = os.path.join(prompt_path, "root.yaml")
@@ -254,6 +261,74 @@ def api(query):
 
       set_state(prompt)
       print(colored("Success:", "green"), "Passkey key set.")
+
+      sys.exit()
+
+  elif "--IMG" in query:
+  
+      replace_dict = {"--IMG": "", ":" : " "}
+      prompt = replace_multiple(str(query), replace_dict)
+      config = read_config()
+      openai.api_key = config["openai_api_key"]
+
+      def loading_animation():
+          animation_frames = [
+              "\n▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒ Loading ...\n",
+          ]
+          for frame in animation_frames:
+              sys.stdout.write("\033[F")  # Move cursor up one line
+              sys.stdout.write("\033[K")  # Clear the line
+              print(frame, end="")
+              time.sleep(0.4)  # Adjust the delay as needed
+      
+      
+
+      try:          
+        PROMPT = prompt
+        loading_animation()
+
+        response = openai.Image.create(
+            prompt=PROMPT,
+            n=1,
+            size="512x512",  # Adjust the size here to make the image bigger, for example, 512x512
+        )
+
+        image_url = response["data"][0]["url"]
+        # Download the image
+        image_data = requests.get(image_url).content
+
+        # Save the image to the desktop
+        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+        image_path = os.path.join(desktop_path, "Generated_Image.png")
+
+        with open(image_path, "wb") as f:
+            f.write(image_data)
+        
+        def loading_animation():
+          animation_frames = [
+              "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ Loading ...\n"
+          ]
+          for frame in animation_frames:
+              sys.stdout.write("\033[F")  # Move cursor up one line
+              sys.stdout.write("\033[K")  # Clear the line
+              print(frame, end="")
+              time.sleep(0.4)  # Adjust the delay as needed
+
+        loading_animation()
+
+
+        os.system(f"open {image_path}")
+          
+      except:
+            print(colored("Error When Generating Image:", "red"), "Check the API key validity / Renew the API / Prompt Image Error")
+            print(colored("* Prompt        : ", "red") + str(prompt))
+   
+
+      """
+      print(colored(" Maintainance:", "green"), "The issue would be fixed Asap")
+        """
+
+      sys.exit()
     
 
 
