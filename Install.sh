@@ -63,19 +63,25 @@ sleep 0.1
 }
 
 loading
+
+# Check if the target directory already exists
+if [ -d "$TARGET_DIR" ]; then
+    echo "Error: Target directory $TARGET_DIR already exists. Aborting. (Use or Remove)"
+    exit 1
+fi
+
+
 echo "- Cloning the repository..."
-cd "$(pwd)"
+TARGET_DIR="$HOME"
+
+cd "$TARGET_DIR" || exit
 git clone https://github.com/blueraymusic/Combot.git combot
+
 cd combot || exit
 
 TARGET_DIR=~/combot
 TARGET_FULLPATH=$TARGET_DIR/computer.py
 
-# Check if the target directory already exists
-if [ -d "$TARGET_DIR" ]; then
-    echo "Error: Target directory $TARGET_DIR already exists. Aborting."
-    exit 1
-fi
 
 # Copying files
 echo "- Copying files..."
@@ -103,9 +109,14 @@ if [[ -f ~/.zshrc ]]; then
     echo "alias bot=\"$TARGET_FULLPATH\"" >> "$SHELL_CONFIG_FILE"
 fi
 
+#seocnd time
+chmod +x "$TARGET_FULLPATH"
+
 # Reload the shell configuration
+echo " "
 echo "- Reloading the shell configuration..."
 source ~/.bashrc || source ~/.bash_profile || source ~/.zshrc
+echo " "
 
 # Verify if aliases are set correctly
 if ! alias computer &>/dev/null; then
