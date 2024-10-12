@@ -346,7 +346,20 @@ if __name__ == "__main__":
 
   # Parse arguments and make sure we have at least a single word
   if len(sys.argv) < 2:
-    print_usage()
+    
+    def welcoming_art():
+      print(r"""
+      .----------------------.
+      |  Welcome aboard! 😊  |
+      '----------------------'
+             ★        (\_/)    
+            (♥)      (•ㅅ•)      You're awesome!
+            (♥)     (")__(")     Let's get started!
+            
+            !- Type in computer/bot -i -!
+        """)
+
+    welcoming_art()
     sys.exit(-1)
 
   # Safety switch via argument -a (local override of global setting)
