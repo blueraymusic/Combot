@@ -116,6 +116,7 @@ chmod +x "$TARGET_FULLPATH"
 echo " "
 echo "- Reloading the shell configuration..."
 source ~/.bashrc || source ~/.bash_profile || source ~/.zshrc
+source "$SHELL_CONFIG_FILE"
 echo " "
 
 # Verify if aliases are set correctly
