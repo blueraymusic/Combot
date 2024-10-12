@@ -474,14 +474,14 @@ def evaluate_input(user_input, command):
       reply = chat.choices[0].message.content 
 
       if message.lower() == "hi":
-        reply = """
-          .------.
-          |  Hi  |
-          '------'    
-              ^      ((_))
-              '----- (O.o)
-                     (> <)
-                     _/ \_
+        reply = r"""
+            .------.
+            |  Hi  |
+            '------'
+                ^      (\_/)
+                '----- (O.o)
+                       (> <)
+                       _/ \_
           """
         print(colored(str(reply)+"\n",'blue'))
       
