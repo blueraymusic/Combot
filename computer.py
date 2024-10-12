@@ -562,7 +562,7 @@ def evaluate_input(user_input, command):
 try: 
   res_command = call_open_ai(user_prompt) 
 except:
-  sys.exit(colored("The API key couldn't be proccessed 😞: \n   Place a '.openai.apikey' in the home directory that holds the line:    \n     <yourkey> \n   Or Place your key in the computer.yaml file \n   Or Place your key in the file computer.py in the variable 'openai.api_key'\n   Or Enter: computer --API: YOUR_API_KEY\n   Or Type (for more information): Computer -i\n   ", "red"))
+  sys.exit(colored("(Error Recap) The API key couldn't be proccessed 😞: \n   Place a '.openai.apikey' in the home directory that holds the line:    \n     <yourkey> \n   Or Place your key in the computer.yaml file \n   Or Place your key in the file computer.py in the variable 'openai.api_key'\n   Or Enter: computer --API: YOUR_API_KEY\n   Or Type (for more information): Computer -i\n   ", "red"))
 
 check_for_issue(res_command)
 check_for_markdown(res_command)
