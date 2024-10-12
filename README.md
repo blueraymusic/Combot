@@ -133,6 +133,7 @@ Examples:
 
 Here are a couple of examples of how this utility can be used.
 ```
+Note: No Punctuation Mark
 - computer what's the time?
 - computer search up a "banana" on google/youtube
 - computer what's the time in UTC?
