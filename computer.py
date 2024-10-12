@@ -152,7 +152,7 @@ def set_api_key():
 
   #if all the previous statements turn out false
   if not openai.api_key:
-    print(colored("The API key couldn't be proccessed 😞: \n   Place a '.openai.apikey' in the home directory that holds the line:    \n     <yourkey> \n   Or Place your key in the computer.yaml file \n   Or Place your key in the file computer.py in the variable 'openai.api_key' ", "red"))
+    print(colored("The API key couldn't be proccessed 😞: \n   Place a '.openai.apikey' in the home directory that holds the line:    \n     <yourkey> \n   Or Place your key in the computer.yaml file \n   Or Place your key in the file computer.py in the variable 'openai.api_key' \n", "red"))
 
 def replace_multiple(text, replace_dict):
     for old_value, new_value in replace_dict.items():
