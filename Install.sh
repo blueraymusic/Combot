@@ -135,16 +135,19 @@ if ! alias bot &>/dev/null; then
 fi
 
 echo
+echo "Reload/Reopen the terminal"
+echo "Voilaa!!!"
 echo "Done."
+echo
 echo
 echo "Make sure you have the OpenAI API key set via one of these options:" 
 echo "  - environment variable"
 echo "  - .env or an ~/.openai.apikey file or in"
 echo "  - computer.yaml"
 echo "  - type the command: 'computer --API : API_KEY' "
-
+echo
 echo "For more information and commands, type in the following command:"
 echo "  - type the command: 'computer -i' "
-
+echo
 echo
 echo "Have fun!"
