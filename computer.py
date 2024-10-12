@@ -356,7 +356,8 @@ if __name__ == "__main__":
             (♥)      (•ㅅ•)      You're awesome!
             (♥)     (")__(")     Let's get started!
             
-            !- Type in computer/bot -i -!
+            !- Type in computer/bot -i -! 
+            
         """)
 
     welcoming_art()
