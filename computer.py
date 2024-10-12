@@ -477,8 +477,8 @@ def evaluate_input(user_input, command):
         reply = """
           .------.
           |  Hi  |
-          '------'
-              ^      (\_/)
+          '------'    
+              ^      ((_))
               '----- (O.o)
                      (> <)
                      _/ \_
