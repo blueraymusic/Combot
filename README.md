@@ -109,7 +109,7 @@ computer.bat
 ```
 
 
-If you use install.bat, you should have a computer.bat file in your ~ directory that lets you run the command like so:
+If you use install.ps1, you should have a computer.bat file in your ~ directory that lets you run the command like so:
 ```
 .\computer.bat what is my username
 ```
